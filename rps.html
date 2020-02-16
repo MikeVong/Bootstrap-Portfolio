@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Rock Paper Scissors Part 2
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+  <div id="game" class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="jumbotron">
+          <h2>Your choice: <span id="user-text"><strong></strong></span></h2>
+          <h2>Computer choice: <span id="computer-text"><strong></strong></span></h2>
+          <h2>You Win: <span id="win-text"><strong></strong></span></h2>
+          <h2>You Lose: <span id="lose-text"><strong></strong></span></h2>
+          <h2>You Tie: <span id="tie-text"><strong></strong></span></h2>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  </div>
+
+  <script type="text/javascript">
+    
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var win = 0;
+    var lose = 0;
+    var tie = 0;
+
+    var uGuess = document.getElementById("user-text");
+    var cGuess = document.getElementById("computer-text");
+    var wintext = document.getElementById("win-text");
+    var losetext = document.getElementById("lose-text");
+    var tietext = document.getElementById("tie-text");
+    var p = "Paper";
+    var r = "Rock";
+    var s = "Sicissors";
+    
+    
+    
+   
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) 
+    {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s"))
+          {
+          if ((userGuess === "r") && (computerGuess === "s") || 
+              (userGuess ==="s") && (computerGuess === "p") || 
+              (userGuess === "p") && (computerGuess === "r"))
+              {
+              win++;
+              }
+             else if (userGuess == computerGuess) 
+              {
+              tie++;
+              } 
+              else 
+              {
+              lose++;
+              }
+          }
+
+      // Display the user and computer guesses, and wins/losses/ties.
+        uGuess.textContent = userGuess;
+        cGuess.textContent = computerGuess;
+        wintext.textContent = win;
+        losetext.textContent = lose;
+        tietext.textContent = tie;
+
+    };
+
+    
+  </script>
+
+</body>
+
+</html>
